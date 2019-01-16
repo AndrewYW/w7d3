@@ -172,12 +172,16 @@ function (_React$Component) {
           requestAllPokemon = _this$props.requestAllPokemon;
       var pokemons = pokemon.map(function (poke) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: poke.id
+          key: poke.id,
+          className: "unimon"
         }, poke.name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: poke.image_url
+          src: poke.image_url,
+          className: "pokeimg"
         }));
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, pokemons));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "pokelist"
+      }, pokemons));
     }
   }]);
 

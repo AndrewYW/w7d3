@@ -1,3 +1,36 @@
 // Place all the styles related to the Api::Pokemon controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pokeimg {
+  width: 100px;
+  height: 100px;
+}
+
+.pokeimg:hover {
+  width: 1000px;
+  height: 1000px;
+}
+
+.pokelist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.unimon {
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 5px 5px;
+  width: 500px; 
+  height: 200px;
+  color: white;
+  background: #003780;
+  font-size: 30px;
+}
+
+.unimon:hover {
+  width: 2000px;
+}
