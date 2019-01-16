@@ -3,11 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .pokeimg {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
+  box-sizing: border-box;
+  padding: 30px;
 }
 
 .pokeimg:hover {
+  z-index: 1;
   width: 1000px;
   height: 1000px;
 }
@@ -33,4 +36,5 @@
 
 .unimon:hover {
   width: 2000px;
+  justify-content: center;
 }
