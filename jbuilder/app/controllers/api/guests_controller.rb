@@ -1,6 +1,6 @@
 class Api::GuestsController < ApplicationController
   def index
-    @guests = Guest.all
+    @guests = Guest.where(age: 40..50)
     render :index
   end
 
