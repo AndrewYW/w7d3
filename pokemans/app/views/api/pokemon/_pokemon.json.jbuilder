@@ -1,0 +1,1 @@
+json.extract! pokemon, :name, :poke_type, :attack, :defense, :moves, :image_url
