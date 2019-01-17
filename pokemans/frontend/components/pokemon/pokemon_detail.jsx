@@ -15,9 +15,9 @@ class PokemonDetail extends React.Component {
   render() {
     const pokemon = this.props.pokemon; 
     return (
-      <section>
+      <section className="poketail">
         <p>{pokemon.name}</p>
-        <img src={pokemon.image_url} className="pokeimg" />
+        <img src={pokemon.image_url} className="detailimg" />
       </section>
     )
   }

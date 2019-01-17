@@ -192,9 +192,11 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var pokemon = this.props.pokemon;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, pokemon.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "poketail"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, pokemon.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: pokemon.image_url,
-        className: "pokeimg"
+        className: "detailimg"
       }));
     }
   }]);
