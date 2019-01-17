@@ -281,13 +281,15 @@ function (_React$Component) {
       var _this$props = this.props,
           pokemon = _this$props.pokemon,
           requestAllPokemon = _this$props.requestAllPokemon;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/pokemon/".concat(pokemon.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "unimon",
         key: pokemon.id
-      }, pokemon.name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, pokemon.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: pokemon.image_url,
         className: "pokeimg"
-      }));
+      })));
     }
   }]);
 

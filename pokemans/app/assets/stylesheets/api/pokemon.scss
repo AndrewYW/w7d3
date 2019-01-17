@@ -11,8 +11,8 @@
 
 .pokeimg:hover {
   z-index: 1;
-  width: 1000px;
-  height: 1000px;
+  width: 300px;
+  height: 300px;
 }
 
 .pokelist {
@@ -30,11 +30,16 @@
   width: 500px; 
   height: 200px;
   color: white;
-  background: #003780;
+  background: darkkhaki;
   font-size: 30px;
 }
 
 .unimon:hover {
   width: 2000px;
   justify-content: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }

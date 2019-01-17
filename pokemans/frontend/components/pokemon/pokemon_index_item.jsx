@@ -5,9 +5,12 @@ class PokemonIndexItem extends React.Component {
   render() {
     const { pokemon, requestAllPokemon } = this.props;
     return (
-      <li className="unimon" key={ pokemon.id }>
-        {pokemon.name} <img src={pokemon.image_url} className="pokeimg"/>
-      </li>
+      <Link to={`/pokemon/${pokemon.id}`}>
+        <li className="unimon" key={ pokemon.id }>
+          {pokemon.name}
+          <img src={pokemon.image_url} className="pokeimg" />
+        </li>
+      </Link> 
     )
   }
 }
