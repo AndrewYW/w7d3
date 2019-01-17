@@ -111,10 +111,11 @@ var receiveAllPokemon = function receiveAllPokemon(pokemon) {
     pokemon: pokemon
   };
 };
-var receivePokemon = function receivePokemon(pokemon) {
+var receivePokemon = function receivePokemon(payload) {
   return {
     type: RECEIVE_POKEMON,
-    pokemon: pokemon
+    pokemon: payload.pokemon,
+    items: payload.items
   };
 };
 var requestPokemon = function requestPokemon(id) {
@@ -191,13 +192,34 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var pokemon = this.props.pokemon;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      var item_ids = pokemon.item_ids || []; //key into the items since they probably already exist
+      //since render happens AFTER a state change 
+      //amazing. 
+
+      var items = item_ids.map(function (id) {
+        var item = _this.props.items[id];
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "oneItem",
+          key: item.id
+        }, item.name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: item.image_url
+        }));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "poketail"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "detailImgName"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, pokemon.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: pokemon.image_url,
         className: "detailimg"
-      }));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "detailDetails"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Type: ", pokemon.poke_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Attack: ", pokemon.attack), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Defense: ", pokemon.defense), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "itemsList"
+      }, items)));
     }
   }]);
 
@@ -230,7 +252,8 @@ var mapStateToProps = function mapStateToProps(state, props) {
   var pokemonId = props.match.params.pokemonId;
   var poke = state.entities.pokemon[pokemonId] || {};
   return {
-    pokemon: poke
+    pokemon: poke,
+    items: state.entities.items
   };
 };
 
@@ -549,11 +572,21 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/pokemon_actions */ "./frontend/actions/pokemon_actions.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
 var itemsReducer = function itemsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_POKEMON"]:
+      var items = action.items;
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, items);
+
     default:
       return state;
   }
@@ -583,20 +616,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var pokemonReducer = function pokemonReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  var newState = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state);
 
+  // debugger
   switch (action.type) {
     case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_POKEMON"]:
-      Object.values(action.pokemon).forEach(function (poke) {
-        // debugger
-        newState[poke.id] = poke;
-      });
-      return newState;
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, action.pokemon);
 
     case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_POKEMON"]:
       var newPoke = _defineProperty({}, action.pokemon.id, action.pokemon);
 
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])(newState, newPoke);
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, newPoke);
 
     default:
       return state;

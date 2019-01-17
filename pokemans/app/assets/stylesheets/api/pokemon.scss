@@ -9,20 +9,33 @@
   padding: 30px;
 }
 
-.detailimg {
-  width: 300px;
-  height: 300px;
-}
-
 .poketail {
   display: float;
   float: right;
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.detailimg {
+  width: 50%;
+  height: 300px;
+}
+
+.detailDetails {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 30px;
+  margin: 0px;
+  align-items: center;
+}
+
+.detailImgName {
   text-align: center;
   font-size: 20px;
   font-weight: bolder;
   color: black;
-  margin-top: 200px;
-  margin-right: 100px;
 }
 
 .pokeimg:hover {
@@ -57,4 +70,22 @@
 a {
   text-decoration: none;
   color: white;
+}
+
+
+.itemsList {
+  display: flex;
+  font-size: 20px;
+  list-style: none;
+  align-items: center;
+}
+
+.oneItem {
+  border: 3px solid magenta;
+  background: lightpink;
+  width: 100px;
+  height: 200px;
+  padding: 5px;
+  box-sizing: border-box;
+
 }
