@@ -175,6 +175,7 @@ function (_React$Component) {
       //     {poke.name} <img src={poke.image_url} className="pokeimg"/>
       //   </li>
       // ));
+      //add a comment or something - Adam
       var pokemons = this.props.pokemon.map(function (poke) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pokemon_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: poke.id,
